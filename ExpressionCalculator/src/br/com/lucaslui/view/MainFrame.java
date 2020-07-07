@@ -5,6 +5,7 @@
  */
 package br.com.lucaslui.view;
 
+import br.com.lucaslui.logic.ExpressionSolver;
 import java.awt.event.ActionEvent;
 import javax.swing.Action;
 import javax.swing.ActionMap;
@@ -12,7 +13,6 @@ import javax.swing.InputMap;
 import javax.swing.JComponent;
 import javax.swing.KeyStroke;
 import javax.swing.AbstractAction;
-
 
 /**
  *
@@ -27,7 +27,7 @@ public class MainFrame extends javax.swing.JFrame {
         initComponents();
         initKeyComponents();
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -38,153 +38,450 @@ public class MainFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         mainPanel = new javax.swing.JPanel();
-        displayTextField = new javax.swing.JTextField();
+        displayPanel = new javax.swing.JPanel();
+        expressionTextField = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        resultsTextArea = new javax.swing.JTextArea();
         buttonPanel = new javax.swing.JPanel();
-        numberOneButton = new javax.swing.JButton();
-        numberTwoButton = new javax.swing.JButton();
-        numberThreeButton = new javax.swing.JButton();
+        leftButtonPanel = new javax.swing.JPanel();
+        numberSevenButton = new javax.swing.JButton();
+        numberEightButton = new javax.swing.JButton();
+        numberNineButton = new javax.swing.JButton();
         divisionButton = new javax.swing.JButton();
         numberFourButton = new javax.swing.JButton();
         numberFiveButton = new javax.swing.JButton();
         numberSixButton = new javax.swing.JButton();
         multiplyButton = new javax.swing.JButton();
-        numberSevenButton = new javax.swing.JButton();
-        numberEightButton = new javax.swing.JButton();
-        numberNineButton = new javax.swing.JButton();
-        jButton12 = new javax.swing.JButton();
+        numberOneButton = new javax.swing.JButton();
+        numberTwoButton = new javax.swing.JButton();
+        numberThreeButton = new javax.swing.JButton();
+        minusButton = new javax.swing.JButton();
         numberZeroButton = new javax.swing.JButton();
-        jButton14 = new javax.swing.JButton();
-        jButton15 = new javax.swing.JButton();
-        jButton16 = new javax.swing.JButton();
+        dotButton = new javax.swing.JButton();
+        porcentButton = new javax.swing.JButton();
+        plusButton = new javax.swing.JButton();
+        rightButtonPanel = new javax.swing.JPanel();
+        backButton = new javax.swing.JButton();
+        clearButton = new javax.swing.JButton();
+        leftParenthesesButton = new javax.swing.JButton();
+        rightParenthesesButton = new javax.swing.JButton();
+        powButton = new javax.swing.JButton();
+        rootButton = new javax.swing.JButton();
+        equalButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Calculadora");
         setName("mainFrame"); // NOI18N
         setResizable(false);
 
+        mainPanel.setBackground(new java.awt.Color(51, 51, 51));
+        mainPanel.setForeground(new java.awt.Color(204, 204, 204));
         mainPanel.setLayout(new java.awt.BorderLayout(3, 3));
 
-        displayTextField.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        displayTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        displayTextField.setEnabled(false);
-        displayTextField.setPreferredSize(new java.awt.Dimension(114, 100));
-        mainPanel.add(displayTextField, java.awt.BorderLayout.PAGE_START);
+        displayPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        buttonPanel.setLayout(new java.awt.GridLayout(4, 4, 3, 3));
+        expressionTextField.setEditable(false);
+        expressionTextField.setBackground(new java.awt.Color(51, 51, 51));
+        expressionTextField.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        expressionTextField.setForeground(new java.awt.Color(204, 204, 204));
+        expressionTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        expressionTextField.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
+        expressionTextField.setEnabled(false);
+        expressionTextField.setFocusable(false);
+        expressionTextField.setPreferredSize(new java.awt.Dimension(114, 100));
+        displayPanel.add(expressionTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 324, 36));
 
-        numberOneButton.setText("1");
-        numberOneButton.setFocusable(false);
-        numberOneButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                numberOneButtonActionPerformed(evt);
-            }
-        });
-        buttonPanel.add(numberOneButton);
+        resultsTextArea.setEditable(false);
+        resultsTextArea.setBackground(new java.awt.Color(51, 51, 51));
+        resultsTextArea.setColumns(20);
+        resultsTextArea.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        resultsTextArea.setForeground(new java.awt.Color(204, 204, 204));
+        resultsTextArea.setLineWrap(true);
+        resultsTextArea.setRows(5);
+        resultsTextArea.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        resultsTextArea.setEnabled(false);
+        resultsTextArea.setFocusable(false);
+        jScrollPane1.setViewportView(resultsTextArea);
 
-        numberTwoButton.setText("2");
-        numberTwoButton.setFocusable(false);
-        numberTwoButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                numberTwoButtonMouseClicked(evt);
-            }
-        });
-        buttonPanel.add(numberTwoButton);
+        displayPanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 2, 320, 108));
 
-        numberThreeButton.setText("3");
-        numberThreeButton.setFocusable(false);
-        numberThreeButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                numberThreeButtonMouseClicked(evt);
-            }
-        });
-        buttonPanel.add(numberThreeButton);
+        mainPanel.add(displayPanel, java.awt.BorderLayout.NORTH);
 
-        divisionButton.setText("/");
-        divisionButton.setFocusable(false);
-        buttonPanel.add(divisionButton);
+        buttonPanel.setBackground(new java.awt.Color(51, 51, 51));
+        buttonPanel.setForeground(new java.awt.Color(204, 204, 204));
+        buttonPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        numberFourButton.setText("4");
-        numberFourButton.setFocusable(false);
-        numberFourButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                numberFourButtonMouseClicked(evt);
-            }
-        });
-        buttonPanel.add(numberFourButton);
+        leftButtonPanel.setBackground(new java.awt.Color(51, 51, 51));
+        leftButtonPanel.setForeground(new java.awt.Color(204, 204, 204));
+        leftButtonPanel.setLayout(new java.awt.GridLayout(4, 6, 3, 3));
 
-        numberFiveButton.setText("5");
-        numberFiveButton.setFocusable(false);
-        numberFiveButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                numberFiveButtonMouseClicked(evt);
-            }
-        });
-        buttonPanel.add(numberFiveButton);
-
-        numberSixButton.setText("6");
-        numberSixButton.setFocusable(false);
-        numberSixButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                numberSixButtonMouseClicked(evt);
-            }
-        });
-        buttonPanel.add(numberSixButton);
-
-        multiplyButton.setText("*");
-        multiplyButton.setFocusable(false);
-        buttonPanel.add(multiplyButton);
-
+        numberSevenButton.setBackground(new java.awt.Color(51, 51, 51));
+        numberSevenButton.setForeground(new java.awt.Color(204, 204, 204));
         numberSevenButton.setText("7");
+        numberSevenButton.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
         numberSevenButton.setFocusable(false);
+        numberSevenButton.setMaximumSize(new java.awt.Dimension(20, 20));
+        numberSevenButton.setMinimumSize(new java.awt.Dimension(20, 20));
+        numberSevenButton.setOpaque(true);
+        numberSevenButton.setPreferredSize(new java.awt.Dimension(20, 20));
         numberSevenButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 numberSevenButtonMouseClicked(evt);
             }
         });
-        buttonPanel.add(numberSevenButton);
+        leftButtonPanel.add(numberSevenButton);
 
+        numberEightButton.setBackground(new java.awt.Color(51, 51, 51));
+        numberEightButton.setForeground(new java.awt.Color(204, 204, 204));
         numberEightButton.setText("8");
+        numberEightButton.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
         numberEightButton.setFocusable(false);
+        numberEightButton.setMaximumSize(new java.awt.Dimension(20, 20));
+        numberEightButton.setMinimumSize(new java.awt.Dimension(20, 20));
+        numberEightButton.setOpaque(true);
+        numberEightButton.setPreferredSize(new java.awt.Dimension(20, 20));
         numberEightButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 numberEightButtonMouseClicked(evt);
             }
         });
-        buttonPanel.add(numberEightButton);
+        leftButtonPanel.add(numberEightButton);
 
+        numberNineButton.setBackground(new java.awt.Color(51, 51, 51));
+        numberNineButton.setForeground(new java.awt.Color(204, 204, 204));
         numberNineButton.setText("9");
+        numberNineButton.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
         numberNineButton.setFocusable(false);
+        numberNineButton.setMaximumSize(new java.awt.Dimension(20, 20));
+        numberNineButton.setMinimumSize(new java.awt.Dimension(20, 20));
+        numberNineButton.setOpaque(true);
+        numberNineButton.setPreferredSize(new java.awt.Dimension(20, 20));
         numberNineButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 numberNineButtonMouseClicked(evt);
             }
         });
-        buttonPanel.add(numberNineButton);
+        leftButtonPanel.add(numberNineButton);
 
-        jButton12.setText("-");
-        jButton12.setFocusable(false);
-        buttonPanel.add(jButton12);
+        divisionButton.setBackground(new java.awt.Color(51, 51, 51));
+        divisionButton.setForeground(new java.awt.Color(204, 204, 204));
+        divisionButton.setText("/");
+        divisionButton.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
+        divisionButton.setFocusable(false);
+        divisionButton.setMaximumSize(new java.awt.Dimension(20, 20));
+        divisionButton.setMinimumSize(new java.awt.Dimension(20, 20));
+        divisionButton.setOpaque(true);
+        divisionButton.setPreferredSize(new java.awt.Dimension(20, 20));
+        divisionButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                divisionButtonMouseClicked(evt);
+            }
+        });
+        leftButtonPanel.add(divisionButton);
 
+        numberFourButton.setBackground(new java.awt.Color(51, 51, 51));
+        numberFourButton.setForeground(new java.awt.Color(204, 204, 204));
+        numberFourButton.setText("4");
+        numberFourButton.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
+        numberFourButton.setFocusable(false);
+        numberFourButton.setMaximumSize(new java.awt.Dimension(20, 20));
+        numberFourButton.setMinimumSize(new java.awt.Dimension(20, 20));
+        numberFourButton.setOpaque(true);
+        numberFourButton.setPreferredSize(new java.awt.Dimension(20, 20));
+        numberFourButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                numberFourButtonMouseClicked(evt);
+            }
+        });
+        leftButtonPanel.add(numberFourButton);
+
+        numberFiveButton.setBackground(new java.awt.Color(51, 51, 51));
+        numberFiveButton.setForeground(new java.awt.Color(204, 204, 204));
+        numberFiveButton.setText("5");
+        numberFiveButton.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
+        numberFiveButton.setFocusable(false);
+        numberFiveButton.setMaximumSize(new java.awt.Dimension(20, 20));
+        numberFiveButton.setMinimumSize(new java.awt.Dimension(20, 20));
+        numberFiveButton.setOpaque(true);
+        numberFiveButton.setPreferredSize(new java.awt.Dimension(20, 20));
+        numberFiveButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                numberFiveButtonMouseClicked(evt);
+            }
+        });
+        leftButtonPanel.add(numberFiveButton);
+
+        numberSixButton.setBackground(new java.awt.Color(51, 51, 51));
+        numberSixButton.setForeground(new java.awt.Color(204, 204, 204));
+        numberSixButton.setText("6");
+        numberSixButton.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
+        numberSixButton.setFocusable(false);
+        numberSixButton.setMaximumSize(new java.awt.Dimension(20, 20));
+        numberSixButton.setMinimumSize(new java.awt.Dimension(20, 20));
+        numberSixButton.setOpaque(true);
+        numberSixButton.setPreferredSize(new java.awt.Dimension(20, 20));
+        numberSixButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                numberSixButtonMouseClicked(evt);
+            }
+        });
+        leftButtonPanel.add(numberSixButton);
+
+        multiplyButton.setBackground(new java.awt.Color(51, 51, 51));
+        multiplyButton.setForeground(new java.awt.Color(204, 204, 204));
+        multiplyButton.setText("*");
+        multiplyButton.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
+        multiplyButton.setFocusable(false);
+        multiplyButton.setMaximumSize(new java.awt.Dimension(20, 20));
+        multiplyButton.setMinimumSize(new java.awt.Dimension(20, 20));
+        multiplyButton.setOpaque(true);
+        multiplyButton.setPreferredSize(new java.awt.Dimension(20, 20));
+        multiplyButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                multiplyButtonMouseClicked(evt);
+            }
+        });
+        leftButtonPanel.add(multiplyButton);
+
+        numberOneButton.setBackground(new java.awt.Color(51, 51, 51));
+        numberOneButton.setForeground(new java.awt.Color(204, 204, 204));
+        numberOneButton.setText("1");
+        numberOneButton.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
+        numberOneButton.setFocusable(false);
+        numberOneButton.setMaximumSize(new java.awt.Dimension(20, 20));
+        numberOneButton.setMinimumSize(new java.awt.Dimension(20, 20));
+        numberOneButton.setOpaque(true);
+        numberOneButton.setPreferredSize(new java.awt.Dimension(20, 20));
+        numberOneButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                numberOneButtonActionPerformed(evt);
+            }
+        });
+        leftButtonPanel.add(numberOneButton);
+
+        numberTwoButton.setBackground(new java.awt.Color(51, 51, 51));
+        numberTwoButton.setForeground(new java.awt.Color(204, 204, 204));
+        numberTwoButton.setText("2");
+        numberTwoButton.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
+        numberTwoButton.setFocusable(false);
+        numberTwoButton.setMaximumSize(new java.awt.Dimension(20, 20));
+        numberTwoButton.setMinimumSize(new java.awt.Dimension(20, 20));
+        numberTwoButton.setOpaque(true);
+        numberTwoButton.setPreferredSize(new java.awt.Dimension(20, 20));
+        numberTwoButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                numberTwoButtonMouseClicked(evt);
+            }
+        });
+        leftButtonPanel.add(numberTwoButton);
+
+        numberThreeButton.setBackground(new java.awt.Color(51, 51, 51));
+        numberThreeButton.setForeground(new java.awt.Color(204, 204, 204));
+        numberThreeButton.setText("3");
+        numberThreeButton.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
+        numberThreeButton.setFocusable(false);
+        numberThreeButton.setMaximumSize(new java.awt.Dimension(20, 20));
+        numberThreeButton.setMinimumSize(new java.awt.Dimension(20, 20));
+        numberThreeButton.setOpaque(true);
+        numberThreeButton.setPreferredSize(new java.awt.Dimension(20, 20));
+        numberThreeButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                numberThreeButtonMouseClicked(evt);
+            }
+        });
+        leftButtonPanel.add(numberThreeButton);
+
+        minusButton.setBackground(new java.awt.Color(51, 51, 51));
+        minusButton.setForeground(new java.awt.Color(204, 204, 204));
+        minusButton.setText("-");
+        minusButton.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
+        minusButton.setFocusable(false);
+        minusButton.setMaximumSize(new java.awt.Dimension(20, 20));
+        minusButton.setMinimumSize(new java.awt.Dimension(20, 20));
+        minusButton.setOpaque(true);
+        minusButton.setPreferredSize(new java.awt.Dimension(20, 20));
+        minusButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                minusButtonMouseClicked(evt);
+            }
+        });
+        leftButtonPanel.add(minusButton);
+
+        numberZeroButton.setBackground(new java.awt.Color(51, 51, 51));
+        numberZeroButton.setForeground(new java.awt.Color(204, 204, 204));
         numberZeroButton.setText("0");
+        numberZeroButton.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
         numberZeroButton.setFocusable(false);
+        numberZeroButton.setMaximumSize(new java.awt.Dimension(20, 20));
+        numberZeroButton.setMinimumSize(new java.awt.Dimension(20, 20));
+        numberZeroButton.setOpaque(true);
+        numberZeroButton.setPreferredSize(new java.awt.Dimension(20, 20));
         numberZeroButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 numberZeroButtonMouseClicked(evt);
             }
         });
-        buttonPanel.add(numberZeroButton);
+        leftButtonPanel.add(numberZeroButton);
 
-        jButton14.setText("-");
-        jButton14.setFocusable(false);
-        buttonPanel.add(jButton14);
+        dotButton.setBackground(new java.awt.Color(51, 51, 51));
+        dotButton.setForeground(new java.awt.Color(204, 204, 204));
+        dotButton.setText(".");
+        dotButton.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
+        dotButton.setFocusable(false);
+        dotButton.setMaximumSize(new java.awt.Dimension(20, 20));
+        dotButton.setMinimumSize(new java.awt.Dimension(20, 20));
+        dotButton.setOpaque(true);
+        dotButton.setPreferredSize(new java.awt.Dimension(20, 20));
+        dotButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                dotButtonMouseClicked(evt);
+            }
+        });
+        leftButtonPanel.add(dotButton);
 
-        jButton15.setText("=");
-        jButton15.setFocusable(false);
-        buttonPanel.add(jButton15);
+        porcentButton.setBackground(new java.awt.Color(51, 51, 51));
+        porcentButton.setForeground(new java.awt.Color(204, 204, 204));
+        porcentButton.setText("%");
+        porcentButton.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
+        porcentButton.setFocusable(false);
+        porcentButton.setMaximumSize(new java.awt.Dimension(20, 20));
+        porcentButton.setMinimumSize(new java.awt.Dimension(20, 20));
+        porcentButton.setOpaque(true);
+        porcentButton.setPreferredSize(new java.awt.Dimension(20, 20));
+        leftButtonPanel.add(porcentButton);
 
-        jButton16.setText("+");
-        jButton16.setFocusable(false);
-        buttonPanel.add(jButton16);
+        plusButton.setBackground(new java.awt.Color(51, 51, 51));
+        plusButton.setForeground(new java.awt.Color(204, 204, 204));
+        plusButton.setText("+");
+        plusButton.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
+        plusButton.setFocusable(false);
+        plusButton.setMaximumSize(new java.awt.Dimension(20, 20));
+        plusButton.setMinimumSize(new java.awt.Dimension(20, 20));
+        plusButton.setOpaque(true);
+        plusButton.setPreferredSize(new java.awt.Dimension(20, 20));
+        plusButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                plusButtonMouseClicked(evt);
+            }
+        });
+        leftButtonPanel.add(plusButton);
+
+        buttonPanel.add(leftButtonPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 1, 216, 214));
+
+        rightButtonPanel.setBackground(new java.awt.Color(51, 51, 51));
+        rightButtonPanel.setForeground(new java.awt.Color(204, 204, 204));
+        rightButtonPanel.setLayout(new java.awt.GridLayout(3, 2, 3, 3));
+
+        backButton.setBackground(new java.awt.Color(51, 51, 51));
+        backButton.setForeground(new java.awt.Color(204, 204, 204));
+        backButton.setText("Back");
+        backButton.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
+        backButton.setFocusable(false);
+        backButton.setMaximumSize(new java.awt.Dimension(20, 20));
+        backButton.setMinimumSize(new java.awt.Dimension(20, 20));
+        backButton.setOpaque(true);
+        backButton.setPreferredSize(new java.awt.Dimension(20, 20));
+        backButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                backButtonMouseClicked(evt);
+            }
+        });
+        rightButtonPanel.add(backButton);
+
+        clearButton.setBackground(new java.awt.Color(51, 51, 51));
+        clearButton.setForeground(new java.awt.Color(204, 204, 204));
+        clearButton.setText("Clear");
+        clearButton.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
+        clearButton.setFocusable(false);
+        clearButton.setMaximumSize(new java.awt.Dimension(20, 20));
+        clearButton.setMinimumSize(new java.awt.Dimension(20, 20));
+        clearButton.setOpaque(true);
+        clearButton.setPreferredSize(new java.awt.Dimension(20, 20));
+        clearButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                clearButtonMouseClicked(evt);
+            }
+        });
+        rightButtonPanel.add(clearButton);
+
+        leftParenthesesButton.setBackground(new java.awt.Color(51, 51, 51));
+        leftParenthesesButton.setForeground(new java.awt.Color(204, 204, 204));
+        leftParenthesesButton.setText("(");
+        leftParenthesesButton.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
+        leftParenthesesButton.setFocusable(false);
+        leftParenthesesButton.setMaximumSize(new java.awt.Dimension(20, 20));
+        leftParenthesesButton.setMinimumSize(new java.awt.Dimension(20, 20));
+        leftParenthesesButton.setOpaque(true);
+        leftParenthesesButton.setPreferredSize(new java.awt.Dimension(20, 20));
+        leftParenthesesButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                leftParenthesesButtonMouseClicked(evt);
+            }
+        });
+        rightButtonPanel.add(leftParenthesesButton);
+
+        rightParenthesesButton.setBackground(new java.awt.Color(51, 51, 51));
+        rightParenthesesButton.setForeground(new java.awt.Color(204, 204, 204));
+        rightParenthesesButton.setText(")");
+        rightParenthesesButton.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
+        rightParenthesesButton.setFocusable(false);
+        rightParenthesesButton.setMaximumSize(new java.awt.Dimension(20, 20));
+        rightParenthesesButton.setMinimumSize(new java.awt.Dimension(20, 20));
+        rightParenthesesButton.setOpaque(true);
+        rightParenthesesButton.setPreferredSize(new java.awt.Dimension(20, 20));
+        rightParenthesesButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rightParenthesesButtonMouseClicked(evt);
+            }
+        });
+        rightButtonPanel.add(rightParenthesesButton);
+
+        powButton.setBackground(new java.awt.Color(51, 51, 51));
+        powButton.setForeground(new java.awt.Color(204, 204, 204));
+        powButton.setText("^");
+        powButton.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
+        powButton.setFocusable(false);
+        powButton.setMaximumSize(new java.awt.Dimension(20, 20));
+        powButton.setMinimumSize(new java.awt.Dimension(20, 20));
+        powButton.setOpaque(true);
+        powButton.setPreferredSize(new java.awt.Dimension(20, 20));
+        powButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                powButtonMouseClicked(evt);
+            }
+        });
+        rightButtonPanel.add(powButton);
+
+        rootButton.setBackground(new java.awt.Color(51, 51, 51));
+        rootButton.setForeground(new java.awt.Color(204, 204, 204));
+        rootButton.setText("Root");
+        rootButton.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
+        rootButton.setFocusable(false);
+        rootButton.setMaximumSize(new java.awt.Dimension(20, 20));
+        rootButton.setMinimumSize(new java.awt.Dimension(20, 20));
+        rootButton.setOpaque(true);
+        rootButton.setPreferredSize(new java.awt.Dimension(20, 20));
+        rootButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rootButtonMouseClicked(evt);
+            }
+        });
+        rightButtonPanel.add(rootButton);
+
+        buttonPanel.add(rightButtonPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(216, 0, 108, 162));
+
+        equalButton.setBackground(new java.awt.Color(51, 51, 51));
+        equalButton.setForeground(new java.awt.Color(204, 204, 204));
+        equalButton.setText("=");
+        equalButton.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
+        equalButton.setFocusable(false);
+        equalButton.setOpaque(true);
+        equalButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                equalButtonMouseClicked(evt);
+            }
+        });
+        buttonPanel.add(equalButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(218, 166, 104, 48));
 
         mainPanel.add(buttonPanel, java.awt.BorderLayout.CENTER);
 
@@ -192,20 +489,20 @@ public class MainFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 346, Short.MAX_VALUE)
+            .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
+            .addComponent(mainPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void initKeyComponents(){
-        
+    private void initKeyComponents() {
+
         InputMap inputMap = mainPanel.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
-        
+
         inputMap.put(KeyStroke.getKeyStroke('1'), "addNumberOneToDisplay");
         inputMap.put(KeyStroke.getKeyStroke('2'), "addNumberTwoToDisplay");
         inputMap.put(KeyStroke.getKeyStroke('3'), "addNumberThreeToDisplay");
@@ -216,10 +513,19 @@ public class MainFrame extends javax.swing.JFrame {
         inputMap.put(KeyStroke.getKeyStroke('8'), "addNumberEightToDisplay");
         inputMap.put(KeyStroke.getKeyStroke('9'), "addNumberNineToDisplay");
         inputMap.put(KeyStroke.getKeyStroke('0'), "addNumberZeroToDisplay");
-        
+        inputMap.put(KeyStroke.getKeyStroke('/'), "addOperatorDivisionToDisplay");
+        inputMap.put(KeyStroke.getKeyStroke('*'), "addOperatorMultiplyToDisplay");
+        inputMap.put(KeyStroke.getKeyStroke('-'), "addOperatorMinusToDisplay");
+        inputMap.put(KeyStroke.getKeyStroke('+'), "addOperatorPlusToDisplay");
+        inputMap.put(KeyStroke.getKeyStroke('.'), "addOperatorDotToDisplay");
+        inputMap.put(KeyStroke.getKeyStroke(','), "addOperatorDotToDisplay");
+        inputMap.put(KeyStroke.getKeyStroke('='), "solveExpression");
+        inputMap.put(KeyStroke.getKeyStroke("ENTER"), "solveExpression");
+        inputMap.put(KeyStroke.getKeyStroke("BACK_SPACE"), "backspaceExpression");
+
         ActionMap actionMap = mainPanel.getActionMap();
-        
-        actionMap.put("addNumberOneToDisplay", new KeyActionBinding("1")); 
+
+        actionMap.put("addNumberOneToDisplay", new KeyActionBinding("1"));
         actionMap.put("addNumberTwoToDisplay", new KeyActionBinding("2"));
         actionMap.put("addNumberThreeToDisplay", new KeyActionBinding("3"));
         actionMap.put("addNumberFourToDisplay", new KeyActionBinding("4"));
@@ -229,64 +535,161 @@ public class MainFrame extends javax.swing.JFrame {
         actionMap.put("addNumberEightToDisplay", new KeyActionBinding("8"));
         actionMap.put("addNumberNineToDisplay", new KeyActionBinding("9"));
         actionMap.put("addNumberZeroToDisplay", new KeyActionBinding("0"));
+        actionMap.put("addOperatorDivisionToDisplay", new KeyActionBinding("/"));
+        actionMap.put("addOperatorMultiplyToDisplay", new KeyActionBinding("*"));
+        actionMap.put("addOperatorMinusToDisplay", new KeyActionBinding("-"));
+        actionMap.put("addOperatorPlusToDisplay", new KeyActionBinding("+"));
+        actionMap.put("addOperatorDotToDisplay", new KeyActionBinding("."));
+        actionMap.put("solveExpression", new SolverActionBinding());
+        actionMap.put("backspaceExpression", new BackspaceActionBinding());
     }
-        
-    private class KeyActionBinding extends AbstractAction{
+
+    private class KeyActionBinding extends AbstractAction {
 
         public KeyActionBinding(String name) {
             super(name);
         }
-        
+
         @Override
         public void actionPerformed(ActionEvent evt) {
-             AddNumberToDisplayFromMouseCliked(this.getValue(Action.NAME).toString());
-        }        
+            addCharacterToDisplay(this.getValue(Action.NAME).toString());
+        }
     }
-    
-    private void AddNumberToDisplayFromMouseCliked(String number){
-        displayTextField.setText(displayTextField.getText() + number);
+
+    private class SolverActionBinding extends AbstractAction {
+
+        @Override
+        public void actionPerformed(ActionEvent evt) {
+            solveExpression();
+        }
     }
-     
+
+    private class BackspaceActionBinding extends AbstractAction {
+
+        @Override
+        public void actionPerformed(ActionEvent evt) {
+            backspaceExpression();
+        }
+    }
+
+    private void solveExpression() {
+
+        String expression = expressionTextField.getText();
+        System.out.println(expression);
+        if (expression != null) {
+            try {
+                Double result = ExpressionSolver.evaluate(expression);
+                resultsTextArea.append(expression + "=" + result.toString() + "\n");
+                clearExpression();
+            } catch (java.util.EmptyStackException | IllegalArgumentException e) {
+                resultsTextArea.append("Expression Wrong\n");
+            }
+        }
+    }
+
+    private void clearExpression() {
+        expressionTextField.setText("");
+    }
+
+    private void backspaceExpression() {
+        String expression = expressionTextField.getText();
+        if (expression != null && expression.length() > 0) {
+            expressionTextField.setText(expression.substring(0, expression.length() - 1));
+        }
+    }
+
+    private void addCharacterToDisplay(String number) {
+        expressionTextField.setText(expressionTextField.getText() + number);
+    }
+
     private void numberOneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numberOneButtonActionPerformed
-        AddNumberToDisplayFromMouseCliked("1");
+        addCharacterToDisplay("1");
     }//GEN-LAST:event_numberOneButtonActionPerformed
 
     private void numberTwoButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_numberTwoButtonMouseClicked
-        AddNumberToDisplayFromMouseCliked("2");
+        addCharacterToDisplay("2");
     }//GEN-LAST:event_numberTwoButtonMouseClicked
 
     private void numberThreeButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_numberThreeButtonMouseClicked
-        AddNumberToDisplayFromMouseCliked("3");
+        addCharacterToDisplay("3");
     }//GEN-LAST:event_numberThreeButtonMouseClicked
 
     private void numberFourButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_numberFourButtonMouseClicked
-        AddNumberToDisplayFromMouseCliked("4");
+        addCharacterToDisplay("4");
     }//GEN-LAST:event_numberFourButtonMouseClicked
 
     private void numberFiveButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_numberFiveButtonMouseClicked
-        AddNumberToDisplayFromMouseCliked("5");
+        addCharacterToDisplay("5");
     }//GEN-LAST:event_numberFiveButtonMouseClicked
 
     private void numberSixButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_numberSixButtonMouseClicked
-        AddNumberToDisplayFromMouseCliked("6");
+        addCharacterToDisplay("6");
     }//GEN-LAST:event_numberSixButtonMouseClicked
 
     private void numberSevenButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_numberSevenButtonMouseClicked
-        AddNumberToDisplayFromMouseCliked("7");
+        addCharacterToDisplay("7");
     }//GEN-LAST:event_numberSevenButtonMouseClicked
 
     private void numberEightButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_numberEightButtonMouseClicked
-        AddNumberToDisplayFromMouseCliked("8");
+        addCharacterToDisplay("8");
     }//GEN-LAST:event_numberEightButtonMouseClicked
 
     private void numberNineButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_numberNineButtonMouseClicked
-        AddNumberToDisplayFromMouseCliked("9");
+        addCharacterToDisplay("9");
     }//GEN-LAST:event_numberNineButtonMouseClicked
 
     private void numberZeroButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_numberZeroButtonMouseClicked
-        AddNumberToDisplayFromMouseCliked("0");
+        addCharacterToDisplay("0");
     }//GEN-LAST:event_numberZeroButtonMouseClicked
-           
+
+    private void divisionButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_divisionButtonMouseClicked
+        addCharacterToDisplay("/");
+    }//GEN-LAST:event_divisionButtonMouseClicked
+
+    private void multiplyButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_multiplyButtonMouseClicked
+        addCharacterToDisplay("*");
+    }//GEN-LAST:event_multiplyButtonMouseClicked
+
+    private void minusButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minusButtonMouseClicked
+        addCharacterToDisplay("-");
+    }//GEN-LAST:event_minusButtonMouseClicked
+
+    private void plusButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_plusButtonMouseClicked
+        addCharacterToDisplay("+");
+    }//GEN-LAST:event_plusButtonMouseClicked
+
+    private void dotButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dotButtonMouseClicked
+        addCharacterToDisplay(".");
+    }//GEN-LAST:event_dotButtonMouseClicked
+
+    private void equalButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_equalButtonMouseClicked
+        solveExpression();
+    }//GEN-LAST:event_equalButtonMouseClicked
+
+    private void clearButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearButtonMouseClicked
+        clearExpression();
+    }//GEN-LAST:event_clearButtonMouseClicked
+
+    private void backButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backButtonMouseClicked
+        backspaceExpression();
+    }//GEN-LAST:event_backButtonMouseClicked
+
+    private void leftParenthesesButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_leftParenthesesButtonMouseClicked
+        addCharacterToDisplay("(");
+    }//GEN-LAST:event_leftParenthesesButtonMouseClicked
+
+    private void rightParenthesesButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rightParenthesesButtonMouseClicked
+        addCharacterToDisplay(")");
+    }//GEN-LAST:event_rightParenthesesButtonMouseClicked
+
+    private void powButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_powButtonMouseClicked
+        addCharacterToDisplay("^");
+    }//GEN-LAST:event_powButtonMouseClicked
+
+    private void rootButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rootButtonMouseClicked
+        addCharacterToDisplay("");
+    }//GEN-LAST:event_rootButtonMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -296,9 +699,9 @@ public class MainFrame extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
+ /*try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("GTK+".equals(info.getName())) {
+                if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -311,7 +714,7 @@ public class MainFrame extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
+        }*/
         //</editor-fold>
 
         /* Create and display the form */
@@ -323,14 +726,19 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backButton;
     private javax.swing.JPanel buttonPanel;
-    private javax.swing.JTextField displayTextField;
+    private javax.swing.JButton clearButton;
+    private javax.swing.JPanel displayPanel;
     private javax.swing.JButton divisionButton;
-    private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton15;
-    private javax.swing.JButton jButton16;
+    private javax.swing.JButton dotButton;
+    private javax.swing.JButton equalButton;
+    private javax.swing.JTextField expressionTextField;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel leftButtonPanel;
+    private javax.swing.JButton leftParenthesesButton;
     private javax.swing.JPanel mainPanel;
+    private javax.swing.JButton minusButton;
     private javax.swing.JButton multiplyButton;
     private javax.swing.JButton numberEightButton;
     private javax.swing.JButton numberFiveButton;
@@ -342,5 +750,12 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton numberThreeButton;
     private javax.swing.JButton numberTwoButton;
     private javax.swing.JButton numberZeroButton;
+    private javax.swing.JButton plusButton;
+    private javax.swing.JButton porcentButton;
+    private javax.swing.JButton powButton;
+    private javax.swing.JTextArea resultsTextArea;
+    private javax.swing.JPanel rightButtonPanel;
+    private javax.swing.JButton rightParenthesesButton;
+    private javax.swing.JButton rootButton;
     // End of variables declaration//GEN-END:variables
 }
