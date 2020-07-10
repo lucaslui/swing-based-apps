@@ -39,9 +39,9 @@ public class MainFrame extends javax.swing.JFrame {
 
         mainPanel = new javax.swing.JPanel();
         displayPanel = new javax.swing.JPanel();
-        expressionTextField = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         resultsTextArea = new javax.swing.JTextArea();
+        expressionTextField = new javax.swing.JTextField();
         buttonPanel = new javax.swing.JPanel();
         leftButtonPanel = new javax.swing.JPanel();
         numberSevenButton = new javax.swing.JButton();
@@ -76,34 +76,36 @@ public class MainFrame extends javax.swing.JFrame {
 
         mainPanel.setBackground(new java.awt.Color(51, 51, 51));
         mainPanel.setForeground(new java.awt.Color(204, 204, 204));
-        mainPanel.setLayout(new java.awt.BorderLayout(3, 3));
+        mainPanel.setLayout(new java.awt.BorderLayout(0, 2));
 
-        displayPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        displayPanel.setLayout(new java.awt.BorderLayout());
+
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(262, 100));
+
+        resultsTextArea.setEditable(false);
+        resultsTextArea.setBackground(new java.awt.Color(51, 51, 51));
+        resultsTextArea.setColumns(20);
+        resultsTextArea.setFont(new java.awt.Font("Dialog", 0, 15)); // NOI18N
+        resultsTextArea.setForeground(new java.awt.Color(204, 204, 204));
+        resultsTextArea.setLineWrap(true);
+        resultsTextArea.setRows(5);
+        resultsTextArea.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        resultsTextArea.setEnabled(false);
+        resultsTextArea.setFocusable(false);
+        jScrollPane1.setViewportView(resultsTextArea);
+
+        displayPanel.add(jScrollPane1, java.awt.BorderLayout.NORTH);
 
         expressionTextField.setEditable(false);
         expressionTextField.setBackground(new java.awt.Color(51, 51, 51));
         expressionTextField.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         expressionTextField.setForeground(new java.awt.Color(204, 204, 204));
         expressionTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        expressionTextField.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
+        expressionTextField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 1, true));
         expressionTextField.setEnabled(false);
         expressionTextField.setFocusable(false);
-        expressionTextField.setPreferredSize(new java.awt.Dimension(114, 100));
-        displayPanel.add(expressionTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 324, 36));
-
-        resultsTextArea.setEditable(false);
-        resultsTextArea.setBackground(new java.awt.Color(51, 51, 51));
-        resultsTextArea.setColumns(20);
-        resultsTextArea.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        resultsTextArea.setForeground(new java.awt.Color(204, 204, 204));
-        resultsTextArea.setLineWrap(true);
-        resultsTextArea.setRows(5);
-        resultsTextArea.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        resultsTextArea.setEnabled(false);
-        resultsTextArea.setFocusable(false);
-        jScrollPane1.setViewportView(resultsTextArea);
-
-        displayPanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 2, 320, 108));
+        expressionTextField.setPreferredSize(new java.awt.Dimension(114, 40));
+        displayPanel.add(expressionTextField, java.awt.BorderLayout.CENTER);
 
         mainPanel.add(displayPanel, java.awt.BorderLayout.NORTH);
 
@@ -118,7 +120,7 @@ public class MainFrame extends javax.swing.JFrame {
         numberSevenButton.setBackground(new java.awt.Color(51, 51, 51));
         numberSevenButton.setForeground(new java.awt.Color(204, 204, 204));
         numberSevenButton.setText("7");
-        numberSevenButton.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
+        numberSevenButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 1, true));
         numberSevenButton.setFocusable(false);
         numberSevenButton.setMaximumSize(new java.awt.Dimension(20, 20));
         numberSevenButton.setMinimumSize(new java.awt.Dimension(20, 20));
@@ -134,7 +136,7 @@ public class MainFrame extends javax.swing.JFrame {
         numberEightButton.setBackground(new java.awt.Color(51, 51, 51));
         numberEightButton.setForeground(new java.awt.Color(204, 204, 204));
         numberEightButton.setText("8");
-        numberEightButton.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
+        numberEightButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 1, true));
         numberEightButton.setFocusable(false);
         numberEightButton.setMaximumSize(new java.awt.Dimension(20, 20));
         numberEightButton.setMinimumSize(new java.awt.Dimension(20, 20));
@@ -150,7 +152,7 @@ public class MainFrame extends javax.swing.JFrame {
         numberNineButton.setBackground(new java.awt.Color(51, 51, 51));
         numberNineButton.setForeground(new java.awt.Color(204, 204, 204));
         numberNineButton.setText("9");
-        numberNineButton.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
+        numberNineButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 1, true));
         numberNineButton.setFocusable(false);
         numberNineButton.setMaximumSize(new java.awt.Dimension(20, 20));
         numberNineButton.setMinimumSize(new java.awt.Dimension(20, 20));
@@ -166,7 +168,7 @@ public class MainFrame extends javax.swing.JFrame {
         divisionButton.setBackground(new java.awt.Color(51, 51, 51));
         divisionButton.setForeground(new java.awt.Color(204, 204, 204));
         divisionButton.setText("/");
-        divisionButton.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
+        divisionButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 1, true));
         divisionButton.setFocusable(false);
         divisionButton.setMaximumSize(new java.awt.Dimension(20, 20));
         divisionButton.setMinimumSize(new java.awt.Dimension(20, 20));
@@ -182,7 +184,7 @@ public class MainFrame extends javax.swing.JFrame {
         numberFourButton.setBackground(new java.awt.Color(51, 51, 51));
         numberFourButton.setForeground(new java.awt.Color(204, 204, 204));
         numberFourButton.setText("4");
-        numberFourButton.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
+        numberFourButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 1, true));
         numberFourButton.setFocusable(false);
         numberFourButton.setMaximumSize(new java.awt.Dimension(20, 20));
         numberFourButton.setMinimumSize(new java.awt.Dimension(20, 20));
@@ -198,7 +200,7 @@ public class MainFrame extends javax.swing.JFrame {
         numberFiveButton.setBackground(new java.awt.Color(51, 51, 51));
         numberFiveButton.setForeground(new java.awt.Color(204, 204, 204));
         numberFiveButton.setText("5");
-        numberFiveButton.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
+        numberFiveButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 1, true));
         numberFiveButton.setFocusable(false);
         numberFiveButton.setMaximumSize(new java.awt.Dimension(20, 20));
         numberFiveButton.setMinimumSize(new java.awt.Dimension(20, 20));
@@ -214,7 +216,7 @@ public class MainFrame extends javax.swing.JFrame {
         numberSixButton.setBackground(new java.awt.Color(51, 51, 51));
         numberSixButton.setForeground(new java.awt.Color(204, 204, 204));
         numberSixButton.setText("6");
-        numberSixButton.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
+        numberSixButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 1, true));
         numberSixButton.setFocusable(false);
         numberSixButton.setMaximumSize(new java.awt.Dimension(20, 20));
         numberSixButton.setMinimumSize(new java.awt.Dimension(20, 20));
@@ -230,7 +232,7 @@ public class MainFrame extends javax.swing.JFrame {
         multiplyButton.setBackground(new java.awt.Color(51, 51, 51));
         multiplyButton.setForeground(new java.awt.Color(204, 204, 204));
         multiplyButton.setText("*");
-        multiplyButton.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
+        multiplyButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 1, true));
         multiplyButton.setFocusable(false);
         multiplyButton.setMaximumSize(new java.awt.Dimension(20, 20));
         multiplyButton.setMinimumSize(new java.awt.Dimension(20, 20));
@@ -246,7 +248,7 @@ public class MainFrame extends javax.swing.JFrame {
         numberOneButton.setBackground(new java.awt.Color(51, 51, 51));
         numberOneButton.setForeground(new java.awt.Color(204, 204, 204));
         numberOneButton.setText("1");
-        numberOneButton.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
+        numberOneButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 1, true));
         numberOneButton.setFocusable(false);
         numberOneButton.setMaximumSize(new java.awt.Dimension(20, 20));
         numberOneButton.setMinimumSize(new java.awt.Dimension(20, 20));
@@ -262,7 +264,7 @@ public class MainFrame extends javax.swing.JFrame {
         numberTwoButton.setBackground(new java.awt.Color(51, 51, 51));
         numberTwoButton.setForeground(new java.awt.Color(204, 204, 204));
         numberTwoButton.setText("2");
-        numberTwoButton.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
+        numberTwoButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 1, true));
         numberTwoButton.setFocusable(false);
         numberTwoButton.setMaximumSize(new java.awt.Dimension(20, 20));
         numberTwoButton.setMinimumSize(new java.awt.Dimension(20, 20));
@@ -278,7 +280,7 @@ public class MainFrame extends javax.swing.JFrame {
         numberThreeButton.setBackground(new java.awt.Color(51, 51, 51));
         numberThreeButton.setForeground(new java.awt.Color(204, 204, 204));
         numberThreeButton.setText("3");
-        numberThreeButton.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
+        numberThreeButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 1, true));
         numberThreeButton.setFocusable(false);
         numberThreeButton.setMaximumSize(new java.awt.Dimension(20, 20));
         numberThreeButton.setMinimumSize(new java.awt.Dimension(20, 20));
@@ -294,7 +296,7 @@ public class MainFrame extends javax.swing.JFrame {
         minusButton.setBackground(new java.awt.Color(51, 51, 51));
         minusButton.setForeground(new java.awt.Color(204, 204, 204));
         minusButton.setText("-");
-        minusButton.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
+        minusButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 1, true));
         minusButton.setFocusable(false);
         minusButton.setMaximumSize(new java.awt.Dimension(20, 20));
         minusButton.setMinimumSize(new java.awt.Dimension(20, 20));
@@ -310,7 +312,7 @@ public class MainFrame extends javax.swing.JFrame {
         numberZeroButton.setBackground(new java.awt.Color(51, 51, 51));
         numberZeroButton.setForeground(new java.awt.Color(204, 204, 204));
         numberZeroButton.setText("0");
-        numberZeroButton.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
+        numberZeroButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 1, true));
         numberZeroButton.setFocusable(false);
         numberZeroButton.setMaximumSize(new java.awt.Dimension(20, 20));
         numberZeroButton.setMinimumSize(new java.awt.Dimension(20, 20));
@@ -326,7 +328,7 @@ public class MainFrame extends javax.swing.JFrame {
         dotButton.setBackground(new java.awt.Color(51, 51, 51));
         dotButton.setForeground(new java.awt.Color(204, 204, 204));
         dotButton.setText(".");
-        dotButton.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
+        dotButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 1, true));
         dotButton.setFocusable(false);
         dotButton.setMaximumSize(new java.awt.Dimension(20, 20));
         dotButton.setMinimumSize(new java.awt.Dimension(20, 20));
@@ -342,7 +344,7 @@ public class MainFrame extends javax.swing.JFrame {
         porcentButton.setBackground(new java.awt.Color(51, 51, 51));
         porcentButton.setForeground(new java.awt.Color(204, 204, 204));
         porcentButton.setText("%");
-        porcentButton.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
+        porcentButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 1, true));
         porcentButton.setFocusable(false);
         porcentButton.setMaximumSize(new java.awt.Dimension(20, 20));
         porcentButton.setMinimumSize(new java.awt.Dimension(20, 20));
@@ -353,7 +355,7 @@ public class MainFrame extends javax.swing.JFrame {
         plusButton.setBackground(new java.awt.Color(51, 51, 51));
         plusButton.setForeground(new java.awt.Color(204, 204, 204));
         plusButton.setText("+");
-        plusButton.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
+        plusButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 1, true));
         plusButton.setFocusable(false);
         plusButton.setMaximumSize(new java.awt.Dimension(20, 20));
         plusButton.setMinimumSize(new java.awt.Dimension(20, 20));
@@ -375,7 +377,7 @@ public class MainFrame extends javax.swing.JFrame {
         backButton.setBackground(new java.awt.Color(51, 51, 51));
         backButton.setForeground(new java.awt.Color(204, 204, 204));
         backButton.setText("Back");
-        backButton.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
+        backButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 1, true));
         backButton.setFocusable(false);
         backButton.setMaximumSize(new java.awt.Dimension(20, 20));
         backButton.setMinimumSize(new java.awt.Dimension(20, 20));
@@ -391,7 +393,7 @@ public class MainFrame extends javax.swing.JFrame {
         clearButton.setBackground(new java.awt.Color(51, 51, 51));
         clearButton.setForeground(new java.awt.Color(204, 204, 204));
         clearButton.setText("Clear");
-        clearButton.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
+        clearButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 1, true));
         clearButton.setFocusable(false);
         clearButton.setMaximumSize(new java.awt.Dimension(20, 20));
         clearButton.setMinimumSize(new java.awt.Dimension(20, 20));
@@ -407,7 +409,7 @@ public class MainFrame extends javax.swing.JFrame {
         leftParenthesesButton.setBackground(new java.awt.Color(51, 51, 51));
         leftParenthesesButton.setForeground(new java.awt.Color(204, 204, 204));
         leftParenthesesButton.setText("(");
-        leftParenthesesButton.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
+        leftParenthesesButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 1, true));
         leftParenthesesButton.setFocusable(false);
         leftParenthesesButton.setMaximumSize(new java.awt.Dimension(20, 20));
         leftParenthesesButton.setMinimumSize(new java.awt.Dimension(20, 20));
@@ -423,7 +425,7 @@ public class MainFrame extends javax.swing.JFrame {
         rightParenthesesButton.setBackground(new java.awt.Color(51, 51, 51));
         rightParenthesesButton.setForeground(new java.awt.Color(204, 204, 204));
         rightParenthesesButton.setText(")");
-        rightParenthesesButton.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
+        rightParenthesesButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 1, true));
         rightParenthesesButton.setFocusable(false);
         rightParenthesesButton.setMaximumSize(new java.awt.Dimension(20, 20));
         rightParenthesesButton.setMinimumSize(new java.awt.Dimension(20, 20));
@@ -439,7 +441,7 @@ public class MainFrame extends javax.swing.JFrame {
         powButton.setBackground(new java.awt.Color(51, 51, 51));
         powButton.setForeground(new java.awt.Color(204, 204, 204));
         powButton.setText("^");
-        powButton.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
+        powButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 1, true));
         powButton.setFocusable(false);
         powButton.setMaximumSize(new java.awt.Dimension(20, 20));
         powButton.setMinimumSize(new java.awt.Dimension(20, 20));
@@ -455,7 +457,7 @@ public class MainFrame extends javax.swing.JFrame {
         rootButton.setBackground(new java.awt.Color(51, 51, 51));
         rootButton.setForeground(new java.awt.Color(204, 204, 204));
         rootButton.setText("Root");
-        rootButton.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
+        rootButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 1, true));
         rootButton.setFocusable(false);
         rootButton.setMaximumSize(new java.awt.Dimension(20, 20));
         rootButton.setMinimumSize(new java.awt.Dimension(20, 20));
@@ -473,7 +475,7 @@ public class MainFrame extends javax.swing.JFrame {
         equalButton.setBackground(new java.awt.Color(51, 51, 51));
         equalButton.setForeground(new java.awt.Color(204, 204, 204));
         equalButton.setText("=");
-        equalButton.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
+        equalButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 1, true));
         equalButton.setFocusable(false);
         equalButton.setOpaque(true);
         equalButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -497,6 +499,7 @@ public class MainFrame extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void initKeyComponents() {
@@ -575,7 +578,6 @@ public class MainFrame extends javax.swing.JFrame {
     private void solveExpression() {
 
         String expression = expressionTextField.getText();
-        System.out.println(expression);
         if (expression != null) {
             try {
                 Double result = ExpressionSolver.evaluate(expression);
